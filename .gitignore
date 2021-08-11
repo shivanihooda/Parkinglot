@@ -1,0 +1,9 @@
+env
+
+# Byte-compiled / optimized / DLL files
+*.swp
+__pycache__/
+*.py[cod]
+
+.DS_Store
+.idea
