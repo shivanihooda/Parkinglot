@@ -31,6 +31,11 @@ def park_vehicle(license_number, vehicle_type, ticket):
     find_spot.set_is_empty(False)
 
     find_spot.set_vehicle(vehicle)
+
+    print("Vehicle Parking Information ===>")
+    print(f"Vehicle Type: {vehicle_type}, Vehicle Number: {vehicle.get_licence_number()}, "
+          f"Parking Lot Number: {find_spot.get_parking_id()}")
+
     return find_spot
 
 
@@ -46,15 +51,18 @@ def check_vehicle_spot(parking_id, license_number):
         if spot.get_parking_id() == parking_id:
             vehicle = spot.get_vehicle()
             if vehicle is None:
+                print(f"No Vehicle Found with number {license_number} on parking lot id {parking_id}")
                 return None
             if vehicle.get_licence_number() == license_number:
+                print("Vehicle Spot Details ===>")
+                print(f"Parking Lot ID: {spot.get_parking_id()}, Vehicle_No.: {vehicle.get_licence_number()}")
                 return spot
     return None
 
 
 def run():
     ticket = Ticket("1", datetime.datetime.now())
-    ans = park_vehicle("1234", VehicleType.Car.value, ticket)
+    park_vehicle("1234", VehicleType.Car.value, ticket)
     check_vehicle_spot(101, "1234")
     check_vehicle_spot(202, "1234")
 
